@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>返回三角形类型</title>
+	</head>
+	<body>
+		<!--设计一个函数，参数是 三个三角形的边长，返回值是三角形的类型 ？？-->
+		
+		<script type="text/javascript">
+			!function(window ,document ,undefined){
+				//锐角  直角  钝角  等腰  等边
+				//a*2+b*2=3*2直角   a*2+b*2>3*2锐角   a*2+b*2<钝角
+				//其中有两边相等为等腰 , 三边相等为等边
+				var getTrigonType  = function(x, y, z){
+					var r = '',
+						arr = [x, y,z],
+						s1, s2, s3;
+						
+				//	if (x==y==z){??从右执行，y==z ture x==ture得到false所以会打出等腰三角形
+					if (x==y && y==z){
+						r = '等边'
+					}else if(x==y || x==z || y==z){
+						r = '等腰'
+					}else{
+						sortIt(arr);//回调排序函数
+						//console.log(arr);
+						s1 = arr[0];s2 = arr[1];s3 = arr[2];
+						if(Math.pow(s1 ,2) + Math.pow(s2 ,2) == Math.pow(s3 ,2)){
+							r = '直角'
+						}else if(Math.pow(s1 ,2) + Math.pow(s2 ,2) > Math.pow(s3 ,2)){
+							r = '锐角'
+						}else{
+							r = '钝角'
+						}
+					}
+					return r + '三角形';
+				}
+				//写一个排序函数  要谨记sort的缺点
+				var sortIt = function(arr){
+					arr.sort(function(a, b){
+						return a - b;
+					});
+				};
+					
+				var type = getTrigonType(2, 2, 6);
+				console.log(type);
+				
+			}(window ,document);
+		</script>
+	</body>
+</html>

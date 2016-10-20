@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>仿淘宝价格计算</title>
+		<style type="text/css">
+		
+			body{
+				font-family: "微软雅黑";
+			}
+			.wp{
+				width: 500px;
+				margin: 20px auto;
+			}
+			.wp > p > span {
+				border: 1px solid #999;
+				color: #666;
+				font-size: 14px;
+				display: inline-block;
+			    padding: 8px;/*宽度不一、用padding*/
+			    cursor: pointer;
+			}
+			.wp > p > span.on {
+				border: 2px solid #f60;
+				padding: 7px;
+				background-image: url(img/on.png);
+				background-repeat: no-repeat;
+				background-position: right bottom;
+			}
+			.wp .price{
+				margin-top: 20px;
+			}
+			.wp button {
+				background-color: #FF6600;
+				width: 330px;
+				height: 50px;
+				font-size: 20px;
+				color: #FFFFFF;
+				border: none;
+				margin-top: 20px;
+				font-family:"微软雅黑";
+			}
+			.price #pSpan {
+				color: red;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="wp">
+			<p>
+				<label for="">型号</label>
+				<span data-type = "1" class="on">4.7英寸</span>
+				<span data-type = "2">5.5英寸</span>
+			</p>
+			<p>
+				<label for="">颜色</label>
+				<span class="on">银色</span>
+				<span >金色</span>
+				<span >深空灰色</span>
+			</p>
+			<p>
+				<label for="">内存</label>
+				<span data-mum = "3" class="on">16GB</span>
+				<span data-mum = "4">64GB</span>
+				<span data-mum = "5">128GB</span>
+			</p>
+			<p>
+				<label for="">版本</label>
+				<span  class="on">公开版</span>
+				<span >移动增费版</span>
+				<span >联通合约版</span>
+			</p>
+			<hr />
+			<div class="price">
+				<span>价格：</span>
+				<span id="pSpan">&yen; 10.00</span>
+			</div>
+			
+			<button>立即购买</button>
+		</div>
+		
+		
+		<script src="../les00jQuery/jquery-3.1.1.js"></script>
+		<script type="text/javascript">
+		
+			var $wp = $('.wp');
+			
+			var price = {
+				3:10,
+				4:20,
+				5:30,
+				6:40,
+				8:50,
+				10:60
+			};
+			
+			$wp.find('p > span').on('click' ,function(){
+				var $this = $(this);
+				
+				$this.addClass('on').siblings('span.on').removeClass('on');
+				
+					type = $wp.find('span.on[data-type]').attr('data-type');
+					mum = $wp.find('span.on[data-mum]').attr('data-mum');
+//					mum = $this.attr('date-mum');
+				
+				$('#pSpan').html('&yen; ' + price[type * mum])
+//				console.log(price[type * mum])
+			})
+		</script>
+	</body>
+</html>

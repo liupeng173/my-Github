@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>分页-插件</title>
+		<style type="text/css">
+			body{
+				font-family: "微软雅黑";
+			}
+			
+			.fengye {
+				margin: 100px 0 0 100px;
+			}
+			.fengye a {
+				border: 1px solid #CCCCCC;
+				padding: 7px;
+				text-decoration: none;
+				margin-right: 5px;
+				border-radius: 3px;
+				font-size: 20px;
+			}
+			.fengye span.current , .fengye span.disabled{
+				border: 1px solid red;
+				background-color: red;
+				padding: 7px;
+				font-size: 20px;
+				border-radius: 3px;
+				margin-right: 5px;
+			}
+			.fengye span.disabled {
+				background-color: #E6E6E6;
+				border: 1px solid #CCCCCC;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div class="fengye"></div>
+		<script src="../../les00jQuery/jquery-3.1.1.js"></script>
+		<script src="jquery.page.js"></script>
+		<script >
+			$(".fengye").createPage({
+		        pageCount:100,
+		        current:1,
+		        backFn:function(p){
+		            console.log(p);
+		        }
+		    });
+		</script>
+	</body>
+</html>
